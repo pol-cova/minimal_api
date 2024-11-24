@@ -15,9 +15,7 @@ type Context struct {
 	Next   func()
 }
 
-// COMMON ERRS
 // OK sends a 200 OK response with a JSON body
-
 func (c *Context) OK(data interface{}) {
 	c.JSON(fasthttp.StatusOK, data)
 }
@@ -83,6 +81,7 @@ func (c *Context) Redirect(url string, statusCode int) {
 	c.SetStatusCode(statusCode)
 }
 
+// JSONP sends a JSONP response
 func (c *Context) JSONP(callback string, data interface{}) {
 	c.SetContentType("application/javascript")
 	c.SetBodyString(callback + "(")

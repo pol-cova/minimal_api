@@ -1,6 +1,7 @@
 package mapi
 
 import (
+	"log"
 	"strings"
 
 	"github.com/valyala/fasthttp"
@@ -35,6 +36,11 @@ func (r *Router) Use(middleware HandlerFunc) {
 
 // AddRoute registers a new route with optional middlewares
 func (r *Router) AddRoute(method, path string, handler HandlerFunc, middlewares ...HandlerFunc) {
+	if handler == nil {
+		log.Println("AddRoute received a nil handler")
+		return
+	}
+
 	parts := strings.Split(path, "/")[1:] // Split path into parts (excluding the leading "/")
 	node := r.root
 
@@ -106,6 +112,10 @@ func (r *Router) Handler(ctx *fasthttp.RequestCtx) {
 // executeChain runs middlewares and handler in order
 func executeChain(c *Context, chain []HandlerFunc) {
 	for _, fn := range chain {
+		if fn == nil {
+			log.Println("executeChain received a nil handler")
+			continue
+		}
 		fn(c)
 	}
 }
