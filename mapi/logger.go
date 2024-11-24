@@ -21,11 +21,13 @@ func SetupLogger() {
 
 func Logger(c *Context) {
 	startTime := time.Now()
-	c.Next()
+	if c.Next != nil {
+		c.Next()
+	}
 	duration := time.Since(startTime)
 	logrus.WithFields(logrus.Fields{
-		"method":      c.Method(),
-		"path":        c.Path(),
+		"method":      string(c.Method()),
+		"path":        string(c.Path()),
 		"status_code": c.Response.StatusCode(),
 		"duration":    duration,
 	}).Info("Request handled")
