@@ -13,6 +13,7 @@ type Context struct {
 	*fasthttp.RequestCtx
 	Params Params
 	Next   func()
+	index  int
 }
 
 // OK sends a 200 OK response with a JSON body

@@ -24,6 +24,7 @@ func Logger(c *Context) {
 	if c.Next != nil {
 		c.Next()
 	}
+
 	duration := time.Since(startTime)
 	logrus.WithFields(logrus.Fields{
 		"method":      string(c.Method()),

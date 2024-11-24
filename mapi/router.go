@@ -111,11 +111,15 @@ func (r *Router) Handler(ctx *fasthttp.RequestCtx) {
 
 // executeChain runs middlewares and handler in order
 func executeChain(c *Context, chain []HandlerFunc) {
-	for _, fn := range chain {
-		if fn == nil {
-			log.Println("executeChain received a nil handler")
-			continue
+	c.index = 0 // Reset index for the middleware chain
+	c.Next = func() {
+		if c.index < len(chain) {
+			handler := chain[c.index]
+			c.index++
+			if handler != nil {
+				handler(c) // Execute the current middleware
+			}
 		}
-		fn(c)
 	}
+	c.Next() // Start the middleware chain
 }
