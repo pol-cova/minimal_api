@@ -50,36 +50,25 @@ Este ejemplo muestra cómo usar `minimal_api` para configurar un servidor simple
 package main
 
 import (
-    "log"
-    "mapi"
+   "github.com/pol-cova/minimal_api/mapi"
 )
 
 func main() {
-    // Inicializar el servidor
-    server := mapi.NewServer()
+   app := mapi.NewApp()
 
-    // Middleware global
-    server.Use(func(ctx *mapi.Context) {
-        log.Printf("Solicitud recibida: %s %s", ctx.Method(), ctx.Path())
-        ctx.Next()
-    })
+   app.UseLogger()
 
-    // Ruta GET básica
-    server.Router().GET("/", func(ctx *mapi.Context) {
-        ctx.Response.SetBodyString("¡Bienvenido a minimal_api!")
-    })
+   app.GET("/api", func(c *mapi.Context) {
+      c.Response.SetBodyString("Hello, from minimal API")
+   })
 
-    // Ruta con middleware específico
-    server.Router().GET("/protegido", func(ctx *mapi.Context) {
-        ctx.Response.SetBodyString("Acceso autorizado")
-    }, func(ctx *mapi.Context) {
-        log.Println("Middleware de autenticación ejecutado")
-        ctx.Next()
-    })
+   app.POST("/api", func(c *mapi.Context) {
+      c.Response.SetBodyString("Hello, from POST")
+   })
 
-    // Iniciar el servidor
-    server.Start(":8080")
+   app.Run("127.0.0.1:5000")
 }
+
 ```
 
 ### Prueba el servidor
