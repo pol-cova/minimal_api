@@ -73,8 +73,8 @@ func main() {
 
 ### Prueba el servidor
 
-- Visita [http://localhost:8080/](http://localhost:8080/) para ver el mensaje de bienvenida.
-- Visita [http://localhost:8080/protegido](http://localhost:8080/protegido) para probar una ruta con middleware específico.
+- Visita [http://localhost:8080/api](http://localhost:8080/) para ver el mensaje de bienvenida.
+- Visita [http://localhost:8080/api](http://localhost:8080/protegido) para probar una ruta con post.
 
 ---
 
@@ -101,14 +101,30 @@ El servidor está diseñado para apagarse de forma segura cuando recibe una señ
 
 ```plaintext
 minimal_api/
-├── main.go         // Archivo principal para iniciar el servidor
-├── server.go       // Lógica principal del servidor
-├── router.go       // Gestión de rutas y middlewares
+|--mapi/
+   ├── app.go         // Archivo principal para iniciar el servidor
+   ├── server.go       // Lógica principal del servidor
+   ├── router.go       // Gestión de rutas y middlewares
+   ├── context.go      // Contexto de la solicitud y respuesta
+   ├── response.go     // Manejo de respuestas HTTP
+   ├── request.go      // Manejo de solicitudes HTTP
+   ├── logger.go       // Middleware de registro de solicitudes
+   |--middleware.go  // Definición de middlewares
+   |--template.go    // Plantilla para usar html de servidor
+   |--static.go      // Manejo de archivos estáticos
+
+   
+    
 ├── go.mod          // Dependencias del proyecto
 ├── go.sum          // Hashes de las dependencias
 ```
 
 ---
+
+## Funciones futuras 
+1. **minicli**: Herramienta de línea de comandos para generar proyectos y controlar el servidor.
+2. **Documentación**: Mejorar la documentación y ejemplos para facilitar el uso de la API.
+3. **performance**: Optimizar el rendimiento y la eficiencia del servidor.
 
 ## Contribuciones
 
@@ -127,3 +143,4 @@ Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 ---
 
 Si necesitas ayuda, no dudes en crear un issue en el repositorio o contactarme directamente. ¡Gracias por tu interés en minimal_api!
+contacto: **polc394@gmail.com**
