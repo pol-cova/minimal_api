@@ -1,40 +1,39 @@
-
 # minimal_api
 
-**minimal_api** es un microframework ligero y de alto rendimiento escrito en Go, diseñado para facilitar la creación de APIs minimalistas. Su diseño está inspirado en frameworks como Flask y FastAPI, pero construido para aprovechar la velocidad de `fasthttp`.
+**minimal_api** is a lightweight and high-performance microframework written in Go, designed to facilitate the creation of minimalist APIs. Its design is inspired by frameworks like Flask and FastAPI, but built to leverage the speed of `fasthttp`.
 
-Este proyecto combina simplicidad y eficiencia, ofreciendo una experiencia sencilla para desarrolladores que buscan rapidez y flexibilidad en sus aplicaciones.
-
----
-
-## Características principales
-
-- **Ultra rápido**: Construido sobre `fasthttp`, ofrece un rendimiento superior para manejar solicitudes HTTP.
-- **API limpia y sencilla**: Define rutas, middlewares y manejadores de manera intuitiva.
-- **Middlewares**: Soporte para middlewares globales y específicos para cada ruta.
-- **Apagado controlado**: Manejo adecuado de señales del sistema para detener el servidor de manera segura.
-- **Código modular**: Separación de responsabilidades entre el servidor y el enrutador para facilitar la escalabilidad.
+This project combines simplicity and efficiency, offering an easy experience for developers seeking speed and flexibility in their applications.
 
 ---
 
-## Instalación
+## Main Features
 
-1. **Clonar el repositorio**:
+- **Ultra-fast**: Built on `fasthttp`, it offers superior performance for handling HTTP requests.
+- **Clean and simple API**: Define routes, middlewares, and handlers intuitively.
+- **Middlewares**: Support for global and route-specific middlewares.
+- **Graceful shutdown**: Proper handling of system signals to safely stop the server.
+- **Modular code**: Separation of responsibilities between the server and the router to facilitate scalability.
+
+---
+
+## Installation
+
+1. **Clone the repository**:
 
    ```bash
    git clone https://github.com/pol-cova/minimal_api.git
    cd minimal_api
    ```
 
-2. **Instalar las dependencias**:
+2. **Install dependencies**:
 
-   Asegúrate de tener Go 1.18 o superior instalado y ejecuta:
+   Make sure you have Go 1.18 or higher installed and run:
 
    ```bash
    go mod tidy
    ```
 
-3. **Ejecutar el servidor**:
+3. **Run the server**:
 
    ```bash
    go run main.go
@@ -42,9 +41,9 @@ Este proyecto combina simplicidad y eficiencia, ofreciendo una experiencia senci
 
 ---
 
-## Ejemplo básico
+## Basic Example
 
-Este ejemplo muestra cómo usar `minimal_api` para configurar un servidor simple con rutas y middlewares:
+This example shows how to use `minimal_api` to set up a simple server with routes and middlewares:
 
 ```go
 package main
@@ -68,27 +67,26 @@ func main() {
 
    app.Run("127.0.0.1:5000")
 }
-
 ```
 
-### Prueba el servidor
+### Test the Server
 
-- Visita [http://localhost:8080/api](http://localhost:8080/) para ver el mensaje de bienvenida.
-- Visita [http://localhost:8080/api](http://localhost:8080/protegido) para probar una ruta con post.
+- Visit [http://localhost:8080/api](http://localhost:8080/) to see the welcome message.
+- Visit [http://localhost:8080/api](http://localhost:8080/protegido) to test a POST route.
 
 ---
 
-## Cómo detener el servidor
+## How to Stop the Server
 
-El servidor está diseñado para apagarse de forma segura cuando recibe una señal de interrupción. 
+The server is designed to shut down safely when it receives an interrupt signal.
 
-1. Inicia el servidor normalmente:
+1. Start the server normally:
 
    ```bash
    go run main.go
    ```
 
-2. Detén el servidor presionando `Ctrl+C` en la terminal. Verás un mensaje como:
+2. Stop the server by pressing `Ctrl+C` in the terminal. You will see a message like:
 
    ```
    Shutting down server...
@@ -97,50 +95,49 @@ El servidor está diseñado para apagarse de forma segura cuando recibe una señ
 
 ---
 
-## Estructura del proyecto
+## Project Structure
 
 ```plaintext
 minimal_api/
 |--mapi/
-   ├── app.go         // Archivo principal para iniciar el servidor
-   ├── server.go       // Lógica principal del servidor
-   ├── router.go       // Gestión de rutas y middlewares
-   ├── context.go      // Contexto de la solicitud y respuesta
-   ├── response.go     // Manejo de respuestas HTTP
-   ├── request.go      // Manejo de solicitudes HTTP
-   ├── logger.go       // Middleware de registro de solicitudes
-   |--middleware.go  // Definición de middlewares
-   |--template.go    // Plantilla para usar html de servidor
-   |--static.go      // Manejo de archivos estáticos
+   ├── app.go         // Main file to start the server
+   ├── server.go      // Main server logic
+   ├── router.go      // Route and middleware management
+   ├── context.go     // Request and response context
+   ├── response.go    // HTTP response handling
+   ├── request.go     // HTTP request handling
+   ├── logger.go      // Request logging middleware
+   |--middleware.go   // Middleware definitions
+   |--template.go     // Template for server-side HTML
+   |--static.go       // Static file handling
 
-   
-    
-├── go.mod          // Dependencias del proyecto
-├── go.sum          // Hashes de las dependencias
+├── go.mod            // Project dependencies
+├── go.sum            // Dependency hashes
 ```
 
 ---
 
-## Funciones futuras 
-1. **minicli**: Herramienta de línea de comandos para generar proyectos y controlar el servidor.
-2. **Documentación**: Mejorar la documentación y ejemplos para facilitar el uso de la API.
-3. **performance**: Optimizar el rendimiento y la eficiencia del servidor.
+## Future Features
 
-## Contribuciones
+1. **minicli**: Command-line tool to generate projects and control the server.
+2. **Documentation**: Improve documentation and examples to facilitate API usage.
+3. **Performance**: Optimize server performance and efficiency.
 
-¡Eres bienvenido a contribuir! Aquí tienes algunas formas de hacerlo:
+## Contributions
 
-1. **Reporta errores**: Abre un [issue](https://github.com/pol-cova/minimal_api/issues) para problemas o preguntas.
-2. **Mejora el código**: Envía un *pull request* con nuevas características o correcciones.
-3. **Documenta**: Ayuda a mejorar la documentación con ejemplos adicionales o guías.
+You are welcome to contribute! Here are some ways to do so:
 
----
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
+1. **Report bugs**: Open an [issue](https://github.com/pol-cova/minimal_api/issues) for problems or questions.
+2. **Improve the code**: Submit a pull request with new features or fixes.
+3. **Document**: Help improve the documentation with additional examples or guides.
 
 ---
 
-Si necesitas ayuda, no dudes en crear un issue en el repositorio o contactarme directamente. ¡Gracias por tu interés en minimal_api!
-contacto: **polc394@gmail.com**
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+---
+
+If you need help, feel free to create an issue in the repository or contact me directly. Thank you for your interest in minimal_api!
+Contact: **polc394@gmail.com**
