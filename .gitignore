@@ -1,0 +1,11 @@
+# Binaries for programs and plugins
+*.exe
+*.out
+*.app
+*.dll
+*.so
+
+# Go build artifacts
+*.a
+*.o
+
