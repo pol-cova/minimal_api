@@ -1,6 +1,8 @@
 package commands
 
-import "github.com/spf13/cobra"
+import (
+	"github.com/spf13/cobra"
+)
 
 // Documentation for init command
 // This command will be used to initialize a new minimal_api project
@@ -20,11 +22,25 @@ project/
 // Other things that dev wants to add
 */
 
-// initCmd is a command to initialize a new minimal_api project
-var initCmd = &cobra.Command{
+// InitCmd is a command to initialize a new minimal_api project
+var InitCmd = &cobra.Command{
 	Use:   "init",
 	Short: "init is a command to initialize a new minimal_api project",
 	Long:  `init is a command to initialize a new minimal_api project, this will create a new minimal_api project with default configuration`,
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Print(`
+
+███╗   ███╗ █████╗ ██████╗ ██╗
+████╗ ████║██╔══██╗██╔══██╗██║
+██╔████╔██║███████║██████╔╝██║
+██║╚██╔╝██║██╔══██║██╔═══╝ ██║
+██║ ╚═╝ ██║██║  ██║██║     ██║
+╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+                              
+
+`)
+		cmd.Println("Welcome to minimal_api cli, Let's create a new minimal_api project")
+	},
 }
 
 // Create project skeleton
